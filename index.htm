@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Belanosima:wght@700&family=Caprasimo&family=Courgette&family=Lato:wght@700;900&family=Lilita+One&family=Oswald:wght@700&family=Poppins:wght@700&family=Roboto+Mono:wght@700&family=Roboto:wght@500;700&family=Tektur:wght@600&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Belanosima:wght@700&family=Caprasimo&family=Courgette&family=Lato:wght@700;900&family=Lilita+One&family=Oswald:wght@300;700&family=Poppins:wght@700&family=Roboto+Mono:wght@700&family=Roboto:wght@500;700&family=Tektur:wght@600&display=swap" rel="stylesheet">
+</head>
+<body>
+   <div class="wrapper">
+     <div class="container">
+        <span id="emo">&#128514;</span>
+        <p id="joke"></p>
+        <button type="button" class="trig" id="btn"><b>Get Random Joke</b></button>
+    </div>
+   </div>
+   <script>
+   const jokeContainer = document.getElementById("joke");
+const btn = document.getElementById("btn");
+const url = "https://v2.jokeapi.dev/joke/Any?blacklistFlags=nsfw,religious,political,racist,sexist,explicit&type=single";
+
+let getJoke = () => {
+    jokeContainer.classList.remove("fade");
+    fetch(url)
+    .then(data => data.json())
+    .then(item =>{
+        jokeContainer.textContent = `${item.joke}`;
+        jokeContainer.classList.add("fade");
+    });
+}
+btn.addEventListener("click",getJoke);
+getJoke();
+   </script>
+</body>
+</html>
